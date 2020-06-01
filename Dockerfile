@@ -2,6 +2,7 @@ FROM amphaal/rpgrpz-docker-ci:latest
 LABEL maintainer="guillaume.vara@gmail.com"
 
 USER devel
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-gcc-base
     RUN yay -S --noconfirm --noprogressbar --needed nsis
 
 USER root
