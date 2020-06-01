@@ -1,10 +1,6 @@
 FROM amphaal/rpgrpz-docker-ci:latest
 LABEL maintainer="guillaume.vara@gmail.com"
 
-USER devel
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-gcc-base
-    RUN yay -S --noconfirm --noprogressbar --needed nsis
-
 USER root
     #add multilib mirrorlist (for wine)
     RUN echo "[multilib]" >> /etc/pacman.conf \
@@ -38,7 +34,9 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar --needed protobuf
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
     
-    #RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
-    #RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
+    
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
     
     CMD [ "/usr/bin/bash" ]
