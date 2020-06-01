@@ -1,6 +1,9 @@
 FROM amphaal/rpgrpz-docker-ci:latest
 LABEL maintainer="guillaume.vara@gmail.com"
 
+USER devel
+    RUN yay -S --noconfirm --noprogressbar --needed nsis
+
 USER root
     #add multilib mirrorlist (for wine)
     RUN echo "[multilib]" >> /etc/pacman.conf \
@@ -30,15 +33,11 @@ USER root
     #install requirements
     ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
-    
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
-    
+
     RUN pacman -S --noconfirm --noprogressbar --needed protobuf
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
-
-USER devel
-    RUN yay -S --noconfirm --noprogressbar --needed nsis
-
-USER root
+    
+    #RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
+    #RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
+    
     CMD [ "/usr/bin/bash" ]
