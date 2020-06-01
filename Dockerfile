@@ -36,5 +36,6 @@ USER root
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
     
     RUN pacman -S --noconfirm --noprogressbar --needed protobuf
+    RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
     
     CMD [ "/usr/bin/bash" ]
