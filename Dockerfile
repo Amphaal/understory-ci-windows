@@ -33,9 +33,12 @@ USER root
     
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
     
     RUN pacman -S --noconfirm --noprogressbar --needed protobuf
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
-    
+
+USER devel
+    RUN yay -S --noconfirm --noprogressbar --needed nsis
+
+USER root
     CMD [ "/usr/bin/bash" ]
