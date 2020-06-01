@@ -20,12 +20,9 @@ USER root
 
     #install requirements
     ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
-    ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_dev.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
-    RUN pacman -S --needed --noconfirm - < ./pkglist_dev.txt
-  
-    #rename header files
-    RUN cd /mingw64/x86_64-w64-mingw32/include \ 
-        && cp ntsecapi.h NTSecAPI.h
+    
+    #install NSIS
+    RUN yay -S --needed --noconfirm nsis
     
     CMD [ "/usr/bin/bash" ]
