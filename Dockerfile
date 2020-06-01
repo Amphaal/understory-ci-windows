@@ -30,6 +30,9 @@ USER root
     #install requirements
     ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
+    
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-headers
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
     
     CMD [ "/usr/bin/bash" ]
