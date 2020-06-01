@@ -1,6 +1,10 @@
 FROM amphaal/rpgrpz-docker-ci:latest
 LABEL maintainer="guillaume.vara@gmail.com"
 
+USER devel
+    #install NSIS
+    RUN yay -S --needed --noconfirm nsis
+
 USER root
     #add multilib mirrorlist (for wine)
     RUN echo "[multilib]" >> /etc/pacman.conf \
@@ -21,8 +25,5 @@ USER root
     #install requirements
     ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
-    
-    #install NSIS
-    RUN yay -S --needed --noconfirm nsis
     
     CMD [ "/usr/bin/bash" ]
