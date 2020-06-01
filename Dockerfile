@@ -38,5 +38,6 @@ USER root
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
     
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
+    ADD makensis /usr/bin
     
     CMD [ "/usr/bin/bash" ]
