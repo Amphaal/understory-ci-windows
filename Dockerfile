@@ -38,6 +38,7 @@ USER root
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
     
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
-    ADD https://raw.githubusercontent.com/Amphaal/understory/master/cmake/wrappers/xmakensis.sh /bin/makensis
+    ADD makensis /usr/bin
+    #ADD https://raw.githubusercontent.com/Amphaal/understory/master/cmake/wrappers/xmakensis.sh /bin/makensis
     
     CMD [ "/usr/bin/bash" ]
