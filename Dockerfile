@@ -32,7 +32,7 @@ USER root
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
     
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-headers
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
     
     CMD [ "/usr/bin/bash" ]
