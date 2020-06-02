@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
 
     // increment
     std::vector<std::string> arguments(argv + 1, argv + argc);
-    // arguments.erase(arguments.begin());
     for (auto &arg : arguments) {
         cmd += " ";
         cmd += arg;
