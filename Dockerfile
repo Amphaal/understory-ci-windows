@@ -38,6 +38,9 @@ USER root
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
     
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
-    ADD makensis /usr/sbin
+    
+    # generate wrapper
+    COPY makensis /makensis
+    RUN cd makensis && cmake -GNinja -B. -H. && ninja install
     
     CMD [ "/usr/bin/bash" ]
