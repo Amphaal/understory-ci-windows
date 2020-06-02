@@ -8,6 +8,20 @@
 #include <vector>
 #include <algorithm>
 
+void replaceAll(
+    std::string * str,
+    const std::string& from,
+    const std::string& to
+) {
+    if (from.empty())
+        return;
+    size_t start_pos = 0;
+    while ((start_pos = str->find(from, start_pos)) != std::string::npos) {
+        str->replace(start_pos, from.length(), to);
+        start_pos += to.length();
+    }
+}
+
 int main(int argc, char *argv[]) {
     std::string cmd = "wine /mingw64/bin/makensis.exe";
 
@@ -19,7 +33,7 @@ int main(int argc, char *argv[]) {
     }
 
     // replace "-" with "/"
-    std::replace(cmd.begin(), cmd.end(), '-', '/');
+    replaceAll(&cmd, "-VERSION", "/VERSION");
     std::clog << "Requesting command : [" << cmd << "]" << std::endl;
 
     // open pipe
