@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     }
 
     // replace "-" with "/"
-    std::replace(cmd.begin(), cmd.end(), "-", "/");
+    std::replace(cmd.begin(), cmd.end(), '-', '/');
     std::clog << "Requesting command : " << cmd;
 
     // open pipe
