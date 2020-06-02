@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
     // increment
     std::vector<std::string> arguments(argv + 1, argv + argc);
-    arguments.erase(arguments.begin());
+    // arguments.erase(arguments.begin());
     for (auto &arg : arguments) {
         cmd += " ";
         cmd += arg;
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 
     // replace "-" with "/"
     std::replace(cmd.begin(), cmd.end(), '-', '/');
-    std::clog << "Requesting command : " << cmd;
+    std::clog << "Requesting command : [" << cmd << "]" << std::endl;
 
     // open pipe
     std::unique_ptr<FILE, decltype(&pclose)> pipe(
