@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     }
 
     // replace "-" with "/"
-    replaceAll(&cmd, "-VERSION", "/VERSION");
+    // replaceAll(&cmd, "-VERSION", "/VERSION");
     std::clog << "Requesting command : [" << cmd << "]" << std::endl;
 
     // open pipe
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     }
 
     // output it
-    std::cout << result;
+    if (!result.empty()) std::cout << result << std::endl;
 
     return 0;
 }
