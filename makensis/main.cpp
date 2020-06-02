@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 int main(int argc, char *argv[]) {
     std::string cmd = "wine /mingw64/bin/makensis.exe";
@@ -17,6 +18,10 @@ int main(int argc, char *argv[]) {
         cmd += " ";
         cmd += arg;
     }
+
+    // replace "-" with "/"
+    std::replace(cmd.begin(), cmd.end(), "-", "/");
+    std::clog << "Requesting command : " << cmd;
 
     // open pipe
     std::unique_ptr<FILE, decltype(&pclose)> pipe(
