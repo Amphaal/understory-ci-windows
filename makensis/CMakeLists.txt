@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.17)
+
 project(makensis-wrapper
     DESCRIPTION "wrapper for makensis execution on X-Compilation environement"
     LANGUAGES CXX
