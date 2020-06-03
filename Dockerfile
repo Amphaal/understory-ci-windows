@@ -40,8 +40,8 @@ USER root
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-qt-installer-framework
     
     # generate wrapper
-    COPY wine-wrappers /wine-wrappers
-    RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
+    # COPY wine-wrappers /wine-wrappers
+    # RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
 
 USER devel
     RUN winecfg
