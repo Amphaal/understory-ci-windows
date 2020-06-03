@@ -26,25 +26,25 @@ USER root
     ENV WINEARCH=win64
     ENV WINEPATH=/mingw64/bin
     RUN winecfg
-    
-    #install requirements
-    ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
-    RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
-
-    RUN pacman -S --noconfirm --noprogressbar --needed protobuf
-    RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
-    
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
-    
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-qt-installer-framework
-    
-    # generate wrapper
-    # COPY wine-wrappers /wine-wrappers
-    # RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
 
 USER devel
     RUN winecfg
 
 USER root
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
+    
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-qt-installer-framework
+
+    #install requirements
+    ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
+    RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
+
+    RUN pacman -U https://archive.archlinux.org/packages/p/protobuf/protobuf-3.11.4-1-x86_64.pkg.tar.zst
+    RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
+    
+    # generate wrapper
+    # COPY wine-wrappers /wine-wrappers
+    # RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
+
     CMD [ "/usr/bin/bash" ]
