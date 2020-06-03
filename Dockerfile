@@ -45,7 +45,7 @@ USER root
     RUN pacman -U --noconfirm --noprogressbar --needed https://archive.archlinux.org/packages/p/protobuf/protobuf-3.11.4-1-x86_64.pkg.tar.zst
     
     # generate wrapper
-    # COPY wine-wrappers /wine-wrappers
-    # RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
+    COPY wine-wrappers /wine-wrappers
+    RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
 
     CMD [ "/usr/bin/bash" ]
