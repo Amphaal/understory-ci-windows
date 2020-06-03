@@ -40,8 +40,8 @@ USER root
     ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
 
-    RUN pacman -U https://archive.archlinux.org/packages/p/protobuf/protobuf-3.11.4-1-x86_64.pkg.tar.zst
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
+    RUN pacman -U --noconfirm --noprogressbar --needed https://archive.archlinux.org/packages/p/protobuf/protobuf-3.11.4-1-x86_64.pkg.tar.zst
     
     # generate wrapper
     # COPY wine-wrappers /wine-wrappers
