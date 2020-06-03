@@ -37,10 +37,10 @@ USER root
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-crt
     RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-gcc
     
-    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-nsis
+    RUN pacman -S --needed --noconfirm mingw64/mingw-w64-x86_64-qt-installer-framework
     
     # generate wrapper
-    COPY makensis /makensis
-    RUN cd makensis && cmake -GNinja -B. -H. && ninja install
+    COPY wine-wrappers /wine-wrappers
+    RUN cd wine-wrappers && cmake -GNinja -B. -H. && ninja install
     
     CMD [ "/usr/bin/bash" ]

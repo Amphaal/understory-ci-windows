@@ -8,22 +8,11 @@
 #include <vector>
 #include <algorithm>
 
-void replaceAll(
-    std::string * str,
-    const std::string& from,
-    const std::string& to
-) {
-    if (from.empty())
-        return;
-    size_t start_pos = 0;
-    while ((start_pos = str->find(from, start_pos)) != std::string::npos) {
-        str->replace(start_pos, from.length(), to);
-        start_pos += to.length();
-    }
-}
-
 int main(int argc, char *argv[]) {
-    std::string cmd = "wine /mingw64/bin/makensis.exe";
+    std::string cmd = "wine";
+    #ifdef TO_BE_WRAPPED_PATH
+        cmd += " " + std::string(TO_BE_WRAPPED_PATH);
+    #endif
 
     // increment
     std::vector<std::string> arguments(argv + 1, argv + argc);
@@ -31,10 +20,6 @@ int main(int argc, char *argv[]) {
         cmd += " ";
         cmd += arg;
     }
-
-    // replace "-" with "/"
-    // replaceAll(&cmd, "-VERSION", "/VERSION");
-    std::clog << "Requesting command : [" << cmd << "]" << std::endl;
 
     // open pipe
     std::unique_ptr<FILE, decltype(&pclose)> pipe(
