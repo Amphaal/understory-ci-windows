@@ -53,6 +53,8 @@ USER devel
     ENV WINEARCH=win64
     ENV WINEPATH=/mingw64/bin
     RUN winecfg
+
+    RUN Xvfb :99 &
     RUN installerbase --version
 
 USER root
