@@ -49,6 +49,10 @@ USER root
 
 USER devel
     RUN winetricks allfonts
+    ENV WINEDEBUG=fixme-all
+    ENV WINEARCH=win64
+    ENV WINEPATH=/mingw64/bin
+    RUN winecfg
 
 USER root
     RUN Xvfb :99 &
