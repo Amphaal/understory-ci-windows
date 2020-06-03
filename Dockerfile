@@ -41,7 +41,7 @@ USER root
     
     # generate wrapper
     COPY wine-wrappers /wine-wrappers
-    RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja install
+    RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
 
     # xvfb
     RUN pacman -S --noconfirm --noprogressbar --needed xorg-server-xvfb
