@@ -45,6 +45,8 @@ USER root
 
     # xvfb
     RUN pacman -S --noconfirm --noprogressbar --needed xorg-server-xvfb
+    RUN pacman -S --noconfirm --noprogressbar --needed winetricks
+    RUN winetricks allfonts
     RUN Xvfb :99 &
-    
+
     CMD [ "/usr/bin/bash" ]
