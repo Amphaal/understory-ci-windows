@@ -43,21 +43,8 @@ USER root
     COPY wine-wrappers /wine-wrappers
     RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install
 
-    # xvfb
-    RUN pacman -S --noconfirm --noprogressbar --needed xorg-server-xvfb
-    RUN pacman -S --noconfirm --noprogressbar --needed winetricks
-
 USER devel
-    RUN winetricks allfonts
-    ENV WINEDEBUG=fixme-all
-    ENV WINEARCH=win64
-    ENV WINEPATH=/mingw64/bin
     RUN winecfg
 
-    RUN Xvfb :99 &
-    RUN installerbase --version
-
 USER root
-    RUN Xvfb :99 &
-
     CMD [ "/usr/bin/bash" ]
