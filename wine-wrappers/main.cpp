@@ -9,7 +9,7 @@
 #include <algorithm>
 
 int main(int argc, char *argv[]) {
-    std::string cmd = "wine";
+    std::string cmd = "DISPLAY=:99 wine";
     #ifdef TO_BE_WRAPPED_PATH
         cmd += " " + std::string(TO_BE_WRAPPED_PATH);
     #endif
