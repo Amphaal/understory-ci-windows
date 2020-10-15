@@ -46,8 +46,8 @@ USER root
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
 
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
-    RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
-    # https://archive.archlinux.org/packages/p/protobuf/protobuf-3.11.4-1-x86_64.pkg.tar.zst
+    # RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
+    RUN pacman -U --noconfirm --noprogressbar --needed https://archive.archlinux.org/packages/p/protobuf/protobuf-3.12.3-1-x86_64.pkg.tar.zst
     
     # generate wrapper
     COPY wine-wrappers /wine-wrappers
