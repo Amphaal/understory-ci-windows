@@ -12,6 +12,6 @@ USER root
     
     # add to wrappers
     RUN echo "/mingw64/bin/corrade-rc.exe" > wrappersList.text
-    RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
+    RUN cd wine-wrappers && rm -rf _gen && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
 
     CMD [ "/usr/bin/bash" ]
