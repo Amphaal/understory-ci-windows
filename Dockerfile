@@ -9,5 +9,9 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
     # RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
     RUN pacman -U --noconfirm --noprogressbar --needed https://archive.archlinux.org/packages/p/protobuf/protobuf-3.12.3-1-x86_64.pkg.tar.zst
+    
+    # add to wrappers
+    RUN echo "/mingw64/bin/corrade-rc.exe" > wrappersList.text
+    RUN cd wine-wrappers && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
 
     CMD [ "/usr/bin/bash" ]
