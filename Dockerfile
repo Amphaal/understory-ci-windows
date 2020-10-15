@@ -9,7 +9,7 @@ USER root
         
     #add msys2 mirrorlist
     RUN echo "[mingw64]"  >> /etc/pacman.conf \
-        && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
+        && echo "SigLevel = Never" >> /etc/pacman.conf \
         && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
         && echo "Server = https://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
         && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf \
