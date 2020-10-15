@@ -1,5 +1,0 @@
-/mingw64/bin/archivegen.exe
-/mingw64/bin/binarycreator.exe
-/mingw64/bin/devtool.exe
-/mingw64/bin/installerbase.exe
-/mingw64/bin/repogen.exe
