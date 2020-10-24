@@ -7,11 +7,7 @@ USER root
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
 
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
-    # RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
-    
-    # workaround
-    RUN pacman -U --noconfirm --noprogressbar --needed https://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/mingw-w64-x86_64-protobuf-3.11.4-1-any.pkg.tar.xz
-    RUN pacman -U --noconfirm --noprogressbar --needed https://archive.archlinux.org/packages/p/protobuf/protobuf-3.11.4-1-x86_64.pkg.tar.zst
+    RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
     
     # add to wrappers
     RUN echo "/mingw64/bin/corrade-rc.exe" > ./wine-wrappers/wrappersList.txt
