@@ -3,7 +3,7 @@ LABEL maintainer="guillaume.vara@gmail.com"
 
 USER root
     #install requirements
-    ADD https://raw.githubusercontent.com/Amphaal/understory/master/deps/msys2/pkglist_build.txt /
+    ADD https://raw.githubusercontent.com/Amphaal/understory/master/prerequisites/msys2/pkglist_build.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
 
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
