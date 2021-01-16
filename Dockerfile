@@ -14,7 +14,7 @@ USER root
     RUN cd wine-wrappers && rm -rf _gen && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
     
     #
-    COPY CPackIFW.cmake /usr/share/cmake-3.19/Modules/CPackIFW.cmake
+    COPY ./CPackIFW.cmake /usr/share/cmake-3.19/Modules/CPackIFW.cmake
     
     #
     CMD [ "/usr/bin/bash" ]
