@@ -14,16 +14,7 @@ USER root
     RUN cd wine-wrappers && rm -rf _gen && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
     
     #
-    COPY ./CPackIFW.cmake /usr/share/cmake-3.19/Modules/CPackIFW.cmake
-    
-    #
-    RUN pacman -S --noconfirm --noprogressbar --needed winetricks xorg-server-xvfb
-    RUN rm -r -f ~/.wine
-
-USER devel
-    RUN WINEARCH=win32 WINEPREFIX=~/.wine wine wineboot
-    RUN winetricks allfonts
-    RUN export DISPLAY=:0.0 # Select screen 0.
+    COPY ./CPackIFW_redone.cmake /usr/share/cmake-3.19/Modules/CPackIFW.cmake
     
     #
     CMD [ "/usr/bin/bash" ]
