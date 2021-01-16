@@ -17,4 +17,9 @@ USER root
     COPY ./CPackIFW.cmake /usr/share/cmake-3.19/Modules/CPackIFW.cmake
     
     #
+    RUN pacman -S --noconfirm --noprogressbar --needed winetricks xorg-server-xvfb
+    RUN winetricks allfonts
+    RUN export DISPLAY=:0.0 # Select screen 0.
+    
+    #
     CMD [ "/usr/bin/bash" ]
