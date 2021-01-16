@@ -18,6 +18,8 @@ USER root
     
     #
     RUN pacman -S --noconfirm --noprogressbar --needed winetricks xorg-server-xvfb
+    RUN rm -r -f ~/.wine
+    RUN WINEARCH=win32 WINEPREFIX=~/.wine wine wineboot
     RUN winetricks allfonts
     RUN export DISPLAY=:0.0 # Select screen 0.
     
