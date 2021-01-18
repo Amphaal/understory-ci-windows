@@ -7,7 +7,7 @@ USER root
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
     
     #
-    RUN pacman -Syyu
+    RUN pacman -Syyu --noconfirm
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
     RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
     
