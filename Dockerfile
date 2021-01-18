@@ -5,7 +5,9 @@ USER root
     #install requirements
     ADD https://raw.githubusercontent.com/Amphaal/understory/master/prerequisites/msys2/pkglist_build.txt /
     RUN pacman -S --needed --noconfirm - < ./pkglist_build.txt
-
+    
+    #
+    RUN pacman -Syyu
     RUN pacman -S --noconfirm --noprogressbar --needed imagemagick
     RUN pacman -S --noconfirm --noprogressbar --needed protobuf 
     
